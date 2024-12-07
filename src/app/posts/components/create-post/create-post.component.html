@@ -1,0 +1,42 @@
+
+<div class="create-post-container" [formGroup]="postForm">
+  <div class="post-form">
+    <textarea
+      formControlName="content"
+      placeholder="What's happening?"
+      maxlength="140"
+      class="post-textarea"
+    ></textarea>
+
+    <div class="char-count" [ngClass]="{'warn': remainingChars < 50}">
+      {{ remainingChars }} characters remaining
+    </div>
+
+    <!-- Image Preview -->
+    <div *ngIf="imagePreview" class="image-preview">
+      <img [src]="imagePreview" alt="Post Image Preview">
+      <button (click)="removeImage" class="remove-image-btn">×</button>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="post-actions">
+      <label class="image-upload-btn">
+        <input
+          type="file"
+          accept=".jpg, .jpeg, .png "
+          (change)="onImageSelected($event)"
+          class="file-input"
+        >
+        <i class="upload-icon">📷</i> Add Image
+      </label>
+
+      <button
+        (click)="onSubmit()"
+        class="post-btn"
+        [disabled]="postForm.invalid"
+      >
+        Post
+      </button>
+    </div>
+  </div>
+</div>

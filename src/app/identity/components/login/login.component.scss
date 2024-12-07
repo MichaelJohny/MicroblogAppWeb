@@ -1,0 +1,39 @@
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 0.8em;
+}
+
+.register-link {
+  margin-top: 15px;
+  text-align: center;
+}

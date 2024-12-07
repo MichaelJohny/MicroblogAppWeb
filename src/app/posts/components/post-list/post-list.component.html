@@ -1,0 +1,41 @@
+
+
+<div class="posts-container">
+
+  <div *ngFor="let post of posts" class="post-card">
+    <div class="post-header">
+      <div class="post-author">
+        {{ post.userName }}
+        <span class="post-date">{{ post.createdAt | date:'mediumDate'  }}</span>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <p>{{ post.content }}</p>
+      <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="Post Image" class="post-image" width="640" height="480">
+    </div>
+
+    <div class="post-actions">
+      <button (click)="likePost(post.id)" class="action-btn">
+        ❤️ {{ post.likes || 0 }} Likes
+      </button>
+      <button class="action-btn">
+        💬 {{ post.comments || 0 }} Comments
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    Loading more posts...
+  </div>
+
+  <button
+    *ngIf="!isLoading"
+    (click)="loadPosts()"
+    class="load-more-btn"
+  >
+    Load More
+  </button>
+  <button  [routerLink]="['/posts/create']" class="floating-add-btn">+</button>
+
+</div>
